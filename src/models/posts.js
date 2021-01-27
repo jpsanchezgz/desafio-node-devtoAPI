@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
     date: {
-        type: String,
+        type: Date,
         minlength: 10,
         required: true,
         maxlength: 50
@@ -37,7 +37,7 @@ const schema = new mongoose.Schema({
         trim: true
     },
     tags: {
-        type: String,
+        type: Array,
         minlength: 2,
         maxlength: 50,
         trim: true

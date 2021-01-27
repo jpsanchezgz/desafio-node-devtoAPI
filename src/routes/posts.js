@@ -16,13 +16,21 @@ router.get('/', authMiddleware, async (req, res) => { //preguntar a charles de e
 })
 
 router.post('/', authMiddleware, async (req, res) => {
-    const { date, name, lastName, savedPost, picUrl, title, tags, text } = req.body
-    const postCreated = await posts.createPost(date, name, lastName, savedPost, picUrl, title, tags, text)
-
-    res.json({
-        success: true,
-        data: postCreated
-    })
+    try {
+        const { date, name, lastName, savedPost, picUrl, title, tags, text } = req.body
+        const postCreated = await posts.createPost(date, name, lastName, savedPost, picUrl, title, tags, text)
+    
+        res.json({
+            success: true,
+            data: postCreated
+        }) 
+    } catch (error) {
+        res.status(401)
+        res.json({
+            success: false,
+            message: error.message
+        })
+    }
 })
 
 module.exports = router
