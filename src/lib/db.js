@@ -1,6 +1,13 @@
 const mongoose = require('mongoose')
 
-const url = 'mongodb+srv://juanpablosg:ff6.61aJJJ@kodemiajp.gv2bg.mongodb.net/devto'
+const {
+    DB_USER,
+    DB_PASSWORD,
+    DB_HOST,
+    DB_NAME
+} = process.env
+
+const url = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
 const connect = mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 

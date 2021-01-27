@@ -6,7 +6,7 @@ function auth (req, res, next) {
 
         if(!token) throw new Error('Token required')
 
-        const payloadDecoded = jwt.verify(token, 'miPalabraClave')
+        const payloadDecoded = jwt.verify(token, process.env.JWT_SECRET )
 
         if(!payloadDecoded) throw new Error('Invalid token')
 

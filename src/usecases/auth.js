@@ -18,7 +18,7 @@ async function login (email, password) {
 
     if (!isPasswordValid) throw new Error('Invalid data')
 
-    const token = jwt.sign( {id: userFound._id}, 'miPalabraClave' )
+    const token = jwt.sign( {id: userFound._id}, process.env.JWT_SECRET )
 
     return token
 }
